@@ -13,7 +13,7 @@ const AuthorSchema = new Schema({
 AuthorSchema.virtual('name').get(() => {
 	// To avoid errors in cases where an author does not have either a family name or first name
 	// We want to make sure we handle the exception by returning an empty string for that case
-	var fullname = '';
+	let fullname = '';
 	if (this.first_name && this.family_name) {
 		fullname = this.family_name + ', ' + this.first_name;
 	}
@@ -25,7 +25,7 @@ AuthorSchema.virtual('name').get(() => {
 
 // Virtual for author's lifespan
 AuthorSchema.virtual('lifespan').get(() => {
-	var lifetime_string = '';
+	let lifetime_string = '';
 	if (this.date_of_birth) {
 		lifetime_string = this.date_of_birth.getYear().toString();
 	}
