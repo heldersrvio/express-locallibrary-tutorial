@@ -1,3 +1,4 @@
+require('dotenv').config();
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -11,8 +12,7 @@ const catalogRouter = require('./routes/catalog');
 const app = express();
 
 const mongoose = require('mongoose');
-const mongoDB =
-	'mongodb+srv://sandbox.ekmnf.mongodb.net/local_library?retryWrites=true&w=majority';
+const mongoDB = `mongodb+srv://local_library:${process.env['MONGODB_PASSWORD']}@sandbox.ekmnf.mongodb.net/local_library?retryWrites=true&w=majority`;
 mongoose.connect(mongoDB);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));

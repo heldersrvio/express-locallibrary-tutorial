@@ -8,12 +8,22 @@ module.exports = {
 	parserOptions: {
 		ecmaVersion: 'latest',
 	},
+	plugins: ['prefer-arrow'],
 	rules: {
 		indent: ['error', 'tab'],
 		'linebreak-style': ['error', 'unix'],
 		quotes: ['error', 'single', { avoidEscape: true }],
 		semi: ['error', 'always'],
-		'prefer-arrow-callback': 'warn',
+		'prefer-arrow/prefer-arrow-functions': [
+			'error',
+			{
+				singleReturnOnly: false,
+				disallowPrototype: true,
+				classPropertiesAllowed: true,
+			},
+		],
+		'prefer-arrow-callback': ['error'],
+		'func-style': ['error', 'expression'],
 		'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
 		'comma-dangle': ['warn', 'always-multiline'],
 		'prefer-const': ['error'],
